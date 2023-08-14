@@ -12,10 +12,8 @@ console.log(resultadoSoma);
 function imprimeMensagem() {
   // implemente sua lógica aqui
   const mensagem = prompt('Digite uma mensagem!')
-
   console.log(mensagem)
 }
-imprimeMensagem("óla mundo")
 // EXERCÍCIOS PARA FAZER ------------------------------------------------------------------
 
 // EXERCÍCIO 01
@@ -37,7 +35,7 @@ function imprimeIdade() {
 const idade = anoAtual - anoDeNascimento
 console.log(`Sua idade é ${idade} anos.`)
 }
-imprimeIdade()
+return idade
 
 // EXERCÍCIO 03
 function calculaIMC(peso, altura) {
@@ -54,8 +52,7 @@ console.log(resultadoIMC);
 function imprimeInformacoesUsuario() {
  const nome = prompt('Qual o seu nome?')
  const idade = prompt ('Qual a sua idade?')
- const email = prompt ('Qual o seu e-mail?')
-  console.log(`O meu nome é ${nome}, tenho ${idade}, e o meu e-mail é ${email}`);
+ const email = `Meu nome é ${nome}, tenho ${idade} anos, e o meu e-mail é ${email}`;
 }
 imprimeInformacoesUsuario()
 // EXERCÍCIO 05
@@ -109,7 +106,7 @@ console.log(primeiroElemento);
 // EXERCÍCIO 10
 
 function retornaUltimoElemento(array) {
-  return array [array.lengty-1];
+  return array [array.length-1];
 }
 const arrayNumber2 = [8,9,11,25]
 const primeiroElemento2 = retornaUltimoElemento(arrayNumber2)
@@ -118,8 +115,16 @@ console.log(primeiroElemento2)
 
 // EXERCÍCIO 11
 function trocaPrimeiroEUltimo(array) {
-}
-console.log();
+  const primeiro = array[0];
+  const ultimo = array[array.length - 1];
+
+  array[0] = ultimo;
+  array[array.length - 1] = primeiro;
+
+  return array;
+};
+let array = ["banana,abacate,limao"]
+console.log (trocaPrimeiroEUltimo(array))
 
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
@@ -134,18 +139,36 @@ function checaIgualdadeDesconsiderandoCase(string1, string2) {
 
 // EXERCÍCIO 13
 function checaRenovacaoRG() {
-  // implemente sua lógica aqui
+    let anoAtual = Number(prompt("Qual o ano atual?"));
+    let anoDeNascimento = Number(prompt("Qual o seu ano de nascimento?"));
+    let anoEmissaoRG = Number(prompt("Qual o ano de emissão da sua carteira de identidade?"));
+  
+    let idade = anoAtual - anoDeNascimento;
+    let intervaloRenovacao = (idade <=20 || idade === 20) && 5 || (idade<=50 || idade === 50) && 10 || 15;
+    let tempoDesdeEmissaoRG = anoAtual - anoEmissaoRG;
 
-}
+    let precisaRenovar = tempoDesdeEmissaoRG >= intervaloRenovacao;
+  
+    console.log(precisaRenovar);
+  }
+
 
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
-  // implemente sua lógica aqui
+    return ano % 400 === 0 || (ano % 4 === 0 && ano % 100 !== 0);
+  }
 
-}
+  console.log(checaAnoBissexto(2000))
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
-  // implemente sua lógica aqui
-
-}
+    const respostaIdade = prompt("Você tem mais de 18 anos? (sim ou nao)").toLowerCase();
+    const respostaEnsinoMedio = prompt("Você possui ensino médio completo? (sim ou nao)").toLowerCase();
+    const respostaDisponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso? (sim ou nao)").toLowerCase();
+  
+    const inscricaoValida = respostaIdade === "sim" && respostaEnsinoMedio === "sim" && respostaDisponibilidade === "sim";
+  
+    console.log(inscricaoValida);
+  }
+  
+  checaValidadeInscricaoLabenu();
